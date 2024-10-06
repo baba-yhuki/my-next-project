@@ -12,7 +12,7 @@ export default function Menu() {
   const close = () => setOpen(false);
   return (
     <>
-      <nav className={cx(styles.nav, isOpen && styles.open)}>
+      <nav className={cx(styles.nav, isOpen && styles.open)} id="menu">
         <ul className={styles.items}>
           <li>
             <Link href="/news">ニュース</Link>
@@ -24,7 +24,7 @@ export default function Menu() {
             <Link href="/contact">お問い合わせ</Link>
           </li>
         </ul>
-        <button className={cx(styles.button, styles.close)} onClick={close}>
+        <button className={cx(styles.button, styles.close)} onClick={close} aria-expanded={isOpen} aria-controls="menu">
         <Image 
           src="/close.svg"
           alt="閉じる"
@@ -34,7 +34,7 @@ export default function Menu() {
         />
       </button>
       </nav>
-      <button className={styles.button} onClick={open}>
+      <button className={styles.button} onClick={open} aria-expanded={!isOpen} aria-controls="menu">
         <Image 
           src="/menu.svg"
           alt="メニュー"
